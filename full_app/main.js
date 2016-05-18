@@ -52,6 +52,11 @@ const template = [
         accelerator: 'CmdOrCtrl+A',
         role: 'selectall'
       },
+      {
+        label: 'Quit',
+        accelerator: 'Command+Q',
+        click() { app.quit(); }
+      }
     ]
   },
   {
@@ -158,10 +163,67 @@ if (process.platform === 'darwin') {
         label: 'Quit',
         accelerator: 'Command+Q',
         click() { app.quit(); }
-      },
+      }
     ]
   });
   // Window menu.
+  template[3].submenu.push(
+    {
+      type: 'separator'
+    },
+    {
+      label: 'Bring All to Front',
+      role: 'front'
+    }
+  );
+}
+
+if (process.platform === 'darwin') {
+  const name = electron.app.getName();
+  template.unshift({
+    label: name,
+    submenu: [
+      {
+        label: `About ${name}`,
+        role: 'about'
+      },
+      {
+        type: 'separator'
+      },
+      {
+        label: 'Services',
+        role: 'services',
+        submenu: []
+      },
+      {
+        type: 'separator'
+      },
+      {
+        label: `Hide  + ${name}`,
+        accelerator: 'Command+H',
+        role: 'hide'
+      },
+      {
+        label: 'Hide Others',
+        accelerator: 'Command+Alt+H',
+        role: 'hideothers'
+      },
+      {
+        label: 'Show All',
+        role: 'unhide'
+      },
+      {
+        type: 'separator'
+      },
+      {
+        label: 'Quit',
+        accelerator: 'Command+Q',
+        click() { app.quit(); }
+      },
+    ]
+  });
+  // Window menu to bring all windows to the main screen.
+  // Only available on osx/Darwin systems
   template[3].submenu.push(
     {
       type: 'separator'
