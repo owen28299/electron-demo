@@ -1,0 +1,14 @@
+{
+  "name": "electron-workshop-dist",
+  "version": "0.0.1",
+  "description": "Using 2 JSON structure for deployment of application; This file for dependancies to be distributed with app.",
+  "main": "main.js",
+  "keywords": [
+    "Distribution",
+    "electron",
+    "workshop",
+    "tutorial"
+  ],
+  "author": "Yukio Yamamoto",
+  "license": "MIT"
+}
